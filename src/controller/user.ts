@@ -1,7 +1,17 @@
 import * as Koa from 'koa';
+import * as _ from 'lodash';
 import axios from 'axios';
 
 const ROOT_URL = `https://dummyapi.io/data/api`;
+
+interface Users {
+  id: string;
+  lastName: string;
+  firstName: string;
+  email: string;
+  title: string;
+  picture: string;
+}
 
 const deleteUserIdList: string[] = [];
 
@@ -18,10 +28,26 @@ export const getUsers = async (ctx: Koa.Context, next: () => Promise<any>): Prom
     const responseData = response.data;
     // console.log('responseData = ', responseData);
 
+    const usersList = responseData.data;
+
+    const formattedUsersList: Users[] = [];
+    if (!_.isEmpty(deleteUserIdList)) {
+      usersList.forEach((item: Users, i: number) => {
+        let value = '';
+        deleteUserIdList.forEach((deleteUserId: string, i: number) => {
+          value = deleteUserId;
+        });
+
+        if (item.id !== value) {
+          formattedUsersList.push(item);
+        }
+      });
+    }
+
     ctx.response.status = 200;
     ctx.body = {
       message: 'get users',
-      users: responseData.data,
+      users: _.isEmpty(formattedUsersList) ? usersList : formattedUsersList,
       total: responseData.total,
       page: responseData.page,
       limit: responseData.limit,
@@ -40,7 +66,9 @@ export const deleteUserById = async (ctx: Koa.Context, next: () => Promise<any>)
   console.log('id = ', id);
 
   if (id) {
-    if (!deleteUserIdList.includes(id)) deleteUserIdList.push(id);
+    if (!deleteUserIdList.includes(id)) {
+      deleteUserIdList.push(id);
+    }
     ctx.response.status = 200;
     ctx.body = {
       message: 'delete user by id',
