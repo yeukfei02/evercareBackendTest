@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const ROOT_URL = `https://dummyapi.io/data/api`;
 
+const deleteUserIdList: string[] = [];
+
 export const getUsers = async (ctx: Koa.Context, next: () => Promise<any>): Promise<void> => {
   const response = await axios.get(`${ROOT_URL}/user`, {
     params: {
@@ -37,8 +39,17 @@ export const deleteUserById = async (ctx: Koa.Context, next: () => Promise<any>)
   const id = ctx.params.id;
   console.log('id = ', id);
 
-  ctx.response.status = 200;
-  ctx.body = {
-    message: 'delete user by id',
-  };
+  if (id) {
+    if (!deleteUserIdList.includes(id)) deleteUserIdList.push(id);
+    ctx.response.status = 200;
+    ctx.body = {
+      message: 'delete user by id',
+      deletedUsers: deleteUserIdList,
+    };
+  } else {
+    ctx.response.status = 400;
+    ctx.body = {
+      message: 'delete user by id, missing id',
+    };
+  }
 };
