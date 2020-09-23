@@ -1,6 +1,6 @@
 {
   "name": "evercareBackendTest",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "app.js",
   "repository": "https://github.com/yeukfei02/evercareBackendTest.git",
   "author": "Donald Wu <yeukfei02@gmail.com>",
@@ -44,6 +44,7 @@
     "moment-timezone": "^0.5.31",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.1",
+    "standard-version": "^9.0.0",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.61",
@@ -54,7 +55,8 @@
     "start": "rm -rf dist && tsc && NODE_ENV=production nodemon ./dist/app.js",
     "test": "jest --detectOpenHandles",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release": "standard-version"
   },
   "husky": {
     "hooks": {
