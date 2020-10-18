@@ -1,6 +1,6 @@
 {
   "name": "evercareBackendTest",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "app.js",
   "repository": "https://github.com/yeukfei02/evercareBackendTest.git",
   "author": "Donald Wu <yeukfei02@gmail.com>",
