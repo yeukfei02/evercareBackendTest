@@ -1,4 +1,4 @@
-import * as combineRouters from 'koa-combine-routers';
+import combineRouters from 'koa-combine-routers';
 
 import mainRoutes from '../routes/main';
 import userRoutes from '../routes/user';
