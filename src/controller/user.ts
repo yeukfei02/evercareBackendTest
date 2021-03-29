@@ -1,5 +1,5 @@
-import * as Koa from 'koa';
-import * as _ from 'lodash';
+import Koa from 'koa';
+import _ from 'lodash';
 import axios from 'axios';
 
 const ROOT_URL = `https://dummyapi.io/data/api`;

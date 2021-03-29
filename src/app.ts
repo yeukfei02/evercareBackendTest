@@ -1,13 +1,13 @@
-import * as Koa from 'koa';
+import Koa from 'koa';
 
-import * as cors from '@koa/cors';
-import * as helmet from 'koa-helmet';
-import * as logger from 'koa-logger';
-import * as compress from 'koa-compress';
-import * as bodyParser from 'koa-bodyparser';
-import * as json from 'koa-json';
+import cors from '@koa/cors';
+import helmet from 'koa-helmet';
+import logger from 'koa-logger';
+import compress from 'koa-compress';
+import bodyParser from 'koa-bodyparser';
+import json from 'koa-json';
 
-import * as env from 'dotenv';
+import env from 'dotenv';
 env.config();
 
 import router from './routes/routes';
