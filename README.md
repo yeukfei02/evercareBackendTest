@@ -2,14 +2,14 @@
 
 evercareBackendTest
 
-## Requirement:
+## Requirement
 
 - install yarn
 - install node (v12+)
 
-## Testing and run:
+## Testing and run
 
-```
+```zsh
 $ yarn
 
 // development
@@ -25,9 +25,9 @@ $ yarn run test
 $ yarn run lint
 ```
 
-## Docker:
+## Docker
 
-```
+```zsh
 // build images and start container in one line
 docker-compose up -d --build
 
